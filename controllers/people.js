@@ -6,6 +6,7 @@ const getPeople = (req, res) => {
 
 const createPerson = (req, res) => {
   const { name } = req.body;
+
   if (!name) {
     return res.status(400).json({ success: false, msg: "please provide name value" });
   }
@@ -16,7 +17,7 @@ const updatePerson = (req, res) => {
   const { id } = req.params;
   const { name } = req.body;
 
-  const person = people.find((person) => PerformanceResourceTiming.id === Number(id));
+  const person = people.find((person) => person.id === Number(id));
   if (!person) {
     return res.status(404).json({ success: false, msg: `No person with id ${id}` });
   }
@@ -30,7 +31,7 @@ const updatePerson = (req, res) => {
 };
 
 const deletePerson = (req, res) => {
-  const person = people.find((pereson) => person.id === Number(req.params.id));
+  const person = people.find((person) => person.id === Number(req.params.id));
   if (!person) {
     return res.status(404).json({ success: false, msg: `no person with id ${req.params.id}` });
   }
